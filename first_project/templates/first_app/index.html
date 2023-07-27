@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="{% static 'css/first_app.css' %}">
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>Access Page of Records...</h1>
+            <h4><a href="{% url 'amitsecondapp:index' %}">Go to Second App</a></h4>
+            <h4><a href="{% url 'amitfirstapp:help' %}">Go to Help Page</a></h4>
+
+            {% if access_record %}
+                <table >
+                    <thead>
+                        <th>Site Name</th>
+                        <th>Access Date</th>
+                    </thead>
+                    <tbody>
+                        {% for acc in access_record %}
+                        <tr>
+                            <td>{{ acc.name }}</td>
+                            <td>{{ acc.date }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h1>No Record Found!</h1>
+            {% endif %}
+            
+        </div>
+
+       
+    </body>
+</html>

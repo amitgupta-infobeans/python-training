@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+    <head>
+        <title>Help Page with Image Test</title>
+
+        <link href="{% static 'css/s' %}" rel="stylesheet">
+    </head>
+    <body>
+
+        <h3>Help Page...</h3>
+        <h4><a href="{% url 'amitfirstapp:index' %}">Home</a></h4>
+        <img src="{% static '/images/first_app.png'%}" width="200px" height=" 200px">
+    </body>
+</html>

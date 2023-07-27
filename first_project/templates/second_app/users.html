@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>
+            Users List
+        </title>
+    </head>
+    <tbody>
+        <h1>Welcome to All User list</h1>
+        <h4><a href="{% url 'amitsecondapp:index' %}">Home</a></h4>
+
+        {% if users %}
+            <ol>
+                {% for user in users %}
+                    <li>User Info</li>
+                    <ul>
+                        <li>First name: {{ user.first_name }}</li>
+                        <li>First name: {{ user.last_name }}</li>
+                        <li>First name: {{ user.email }}</li>
+                    </ul>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <h1>No Users Found</h1>
+        {% endif %}
+        
+    </tbody>
+</html>

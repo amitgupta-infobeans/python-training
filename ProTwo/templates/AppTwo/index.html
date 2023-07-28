@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<title>Home Page</title>
+<style>
+    table, tr, td{
+        border: 1px solid gray;
+    }
+</style>
+</head>    
+<body>
+
+    <h1>Please click here to <a href="{% url 'userform' %}">Sign Up</a> </h1>
+
+    {% if newUsers %}
+    <div class="container">
+        <div class="jumbotron">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>SNo.</td>
+                            <td>Name</td>
+                            <td>Email</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in newUsers  %}
+                        
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ user.first_name }} {{ user.last_name }}</td>
+                            <td>{{ user.email }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    {% endif %}
+</body>
+    
+</html>

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from basic_app.models import UserProfileInfo
+from basic_app.models import UserProfileInfo, ContactUsModel
 
 
 class UserForm(forms.ModelForm):
@@ -20,6 +20,13 @@ class UserProfileInfoForm(forms.ModelForm):
         model = UserProfileInfo
         fields = ('portfolio_site', 'profile_pic')
 
+
+
+class ContactUsForm(forms.ModelForm):
+
+    class Meta():
+        model = ContactUsModel
+        fields = ('first_name', 'last_name', 'email', 'desc')
 
 
 

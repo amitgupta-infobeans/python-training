@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% extends 'basic_app/base.html' %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+    <h1>Contact Us</h1>
+    {% for msg in messages %}
+        <div class="alert alert-success messages">
+            {{ msg }}
+        </div>
+    {% endfor %}  
+    
+    <form method="POST" enctype="multipart/form-data">
+        {{ contact_form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+   
+</div>
+
+{% endblock %}

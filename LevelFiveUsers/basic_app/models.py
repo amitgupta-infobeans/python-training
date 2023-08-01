@@ -15,3 +15,9 @@ class UserProfileInfo(models.Model):
 
     def __str__(self):
         return  self.user.username
+
+class ContactUsModel(models.Model):
+    first_name = models.CharField(max_length=160)
+    last_name  = models.CharField(max_length=160)
+    email      = models.EmailField(max_length=200, blank=False, unique=True)
+    desc       = models.TextField(blank=True)

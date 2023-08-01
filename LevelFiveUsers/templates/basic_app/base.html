@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
+{% load static %}
 <html>
     <head>
         <title>Basic App of Django</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-
+        <link rel="stylesheet" href="{% static 'main.css'%}">
     </head>
 
     <bod>
@@ -15,16 +14,17 @@
               <div class="navbar-header">
                 <a class="navbar-brand" href="#">Django Aplication</a>
               </div>
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="{% url 'index' %}">Home</a></li>              
-                <li><a href="{% url 'basic_app:aboutus'  %}">About Us</a></li>
+              <ul class="nav navbar-nav" id="myDIV">
+                <li class="nav-item"  ><a  href="{% url 'index' %}">Home</a></li>              
+                <li class="nav-item"><a  href="{% url 'basic_app:aboutus'  %}">About Us</a></li>
+                <li class="nav-item"><a  href="{% url 'basic_app:contactus'  %}">Contact Us</a></li>
                
                  {% if user.is_authenticated  %}
-                  <li><a href="{% url 'logout'  %}">Logout</a></li>
+                  <li class="nav-item"><a href="{% url 'logout'  %}">Logout</a></li>
                 
                  {% else %}
-                 <li><a href="{% url 'basic_app:register'  %}">Register</a></li>
-                 <li><a href="{% url 'basic_app:user_login'  %}">Login</a></li>
+                 <li class="nav-item"><a href="{% url 'basic_app:register'  %}">Register</a></li>
+                 <li class="nav-item"><a href="{% url 'basic_app:user_login'  %}">Login</a></li>
                  {% endif %}
               </ul>
             </div>
@@ -40,4 +40,19 @@
 </html>
 
 
-<script>setTimeout(function(){$('.messages').fadeOut();}, 2000);</script>
+
+<script>
+  setTimeout(function(){$('.messages').fadeOut();}, 2000);
+
+  var header = document.getElementById("myDIV");
+var btns = header.getElementsByClassName("nav-item");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
+
+
+</script>

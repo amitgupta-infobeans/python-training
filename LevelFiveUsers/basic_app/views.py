@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from basic_app.forms import UserForm, UserProfileInfoForm
+from basic_app.forms import UserForm, UserProfileInfoForm, ContactUsForm
+from basic_app.models import ContactUsModel
 # Create your views here.
 from django.contrib import messages
 
@@ -78,3 +79,20 @@ def user_login(request):
 
 def aboutus(request):
     return render(request, 'basic_app/aboutus.html')
+
+
+# Contact Us Form
+def contactus(request):
+    
+    if request.method == 'POST':
+        contact_form = ContactUsForm(data = request.POST)
+        if contact_form.is_valid():
+            user = contact_form.save()     
+            # return redirect('index')
+            messages.success(request,'Thank you for contact us!')
+        else:
+            print(contact_form.errors)
+    
+    contact_form =  ContactUsForm()
+    return render(request, 'basic_app/contactus.html', context={'contact_form':contact_form})
+

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+    {% extends 'basic_app/base.html' %}
+
+    {% block body_block %}
+    <h1>
+        Home PAGE...
+    </h1>
+
+    <h3>{{ user_name | upper }}</h3>
+    <h3>{{ random_number }}</h3>
+    {% endblock %}

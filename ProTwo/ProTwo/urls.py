@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from AppTwo import views
+# for debug toolbar
+from django.conf import settings
 urlpatterns = [
     
     path('', views.index, name='index'),
@@ -23,3 +25,10 @@ urlpatterns = [
     path('userform/', views.userform, name='userform'),
     path('admin/', admin.site.urls),
 ]
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path(r'^__debug__/', include(debug_toolbar.urls))
+    ] + urlpatterns

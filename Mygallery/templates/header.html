@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="{% url 'index' %}">MyGallery</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+       
+        <li><a href="{% url 'art_gallery:my_gallery' %}"><span class="">My Gallery</a></li>
+        <li><a href="{% url 'art_gallery:public_gallery' %}"><span class=""></span>Public Gallery</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li><a href="{% url 'art_gallery:create'  %}">Add New Gallery</a></li>
+        {% if user.is_authenticated  %}
+            <li><a href="{% url 'logout'  %}">Logout</a></li>
+       {% else %}
+            <li><a href="{% url 'art_gallery:user_login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="{% url 'art_gallery:register' %}"><span class=""></span> Register</a></li>
+       {% endif %}
+       
+      </ul>
+    </div>
+  </div>
+</nav>

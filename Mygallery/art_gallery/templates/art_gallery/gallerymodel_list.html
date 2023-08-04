@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+{% block body_block %}
+        <div class="container">
+        <div class="row">
+            <h1>My Gallery</h1>
+            {% for gallery in gallerymodel_list %}   
+           
+            <div class="col-sm-4">
+                
+                <img src="{{ gallery.gallery_img.url }}" class="img-responsive"  alt="Image">
+                
+                <p><h4>Category : {{ gallery.categoryid  }}</h4></p>   
+                
+                <p><span class="boldd">Description:</span> {{ gallery.desc|slice:":100" }}...
+                <a href="{% url 'art_gallery:gallery_details' gallery.id %}">Details</a></p>
+                
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+{% endblock %}

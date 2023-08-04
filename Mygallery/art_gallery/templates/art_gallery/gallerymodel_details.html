@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+        <h1 class="text-center">Welcome to the Gallery Details</h1>
+            <img src="{{ gallery_details.gallery_img.url }}" class="img-responsive" style="width:100%" alt="Image">
+            <p><h4>Category : {{ gallery_details.categoryid  }}</h4></p>
+            <p><span class="boldd">Description:</span> {{ gallery_details.desc }}</p>
+    </div>
+    {% if user.is_authenticated  %}
+    <div class="container">
+        <p><a class="btn btn-warning" href="{% url 'art_gallery:update' pk=gallery_details.pk  %}">Update</a> &nbsp;
+        <a class="btn btn-danger" href="{% url 'art_gallery:delete' pk=gallery_details.pk  %}">Delete</a></p>
+    </div>
+    {% endif %}
+
+
+{% endblock %}

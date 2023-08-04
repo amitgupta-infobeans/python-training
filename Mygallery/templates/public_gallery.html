@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body_block %}
+
+    <div class="container">
+        <h1 class="center">Collections of All Gallery Images</h1>
+          <div class="row">
+            {% if all_data %}
+
+                {% for gallery in all_data %}   
+                      <div class="col-sm-4">
+                          <img src="{{ gallery.gallery_img.url }}" class="img-responsive"  alt="Image">
+                          <p><h4>Category : {{ gallery.categoryid  }}</h4></p>     
+                          <p><h4>Author : {{ gallery.userid  }}</h4></p>                    
+                          <p><span class="boldd">Description:</span> {{ gallery.desc|slice:":100" }}...
+                            <a href="{% url 'art_gallery:gallery_details' gallery.id %}">Details</a></p>
+                        
+                      </div>
+                {% endfor %}
+
+              {% else %}
+                <h1 class="center">Oops! Sorry You have no Gallery added yet, Please Add new gallery...</h1>
+              {% endif %}
+            </div>
+    </div>
+
+{% endblock %}

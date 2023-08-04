@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+    
+    <div class="container">
+        <div class="row">
+        <br>
+        <img src="{{ gallerymodel.gallery_img.url }}" class="img-responsive"  alt="Image">
+        <h1>Are you Sure want to Delete Gallery: {{ gallerymodel.desc }}?</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Delete"> 
+                <a href="{% url 'art_gallery:gallery_details' pk=gallerymodel.pk %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+  
+{% endblock %}

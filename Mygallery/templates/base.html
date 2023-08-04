@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>My Gallery</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'main.css'%}">
+  
+</head>
+<body>
+  <!-- include header -->
+    {% include "header.html" %}
+
+    <!-- main-div -->
+    <div class="main-div" >
+        {% block body_block %}
+        {% endblock %}
+    </div>
+
+      <!-- footer -->
+    <footer class="container-fluid text-center">
+    <p>Copyright-{% now 'Y' %} by MyGallery Team. All Rights Reserved.</p>
+    </footer>
+      
+</body>
+</html>
+      
